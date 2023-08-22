@@ -208,4 +208,11 @@ extension String {
         let predicate = NSPredicate(format:"SELF MATCHES %@", regex)
         return predicate.evaluate(with: self)
     }
+    
+    var isPureNumber: Bool {
+        let pattern = #"^[+-]?\d+(\.\d+)?$"#
+        let regex = try! NSRegularExpression(pattern: pattern)
+        let range = NSRange(location: 0, length: self.utf16.count)
+        return regex.firstMatch(in: self, range: range) != nil
+    }
 }

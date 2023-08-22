@@ -19,7 +19,14 @@ class CreateBudgetTypeVC: BaseVC {
 
     
     lazy var keyboard : TransactionKeyboard = {
-        TransactionKeyboard()
+        let keyboard = TransactionKeyboard()
+        keyboard.didCompletedEditing = {[weak self] amount, date, sup in
+            guard let self = self else {return}
+            let budget = BudgetTransaction(type: self.transactionType, amount: amount, date: date, sup: sup)
+            BudgetStore.addBudget(budget: budget)
+            self.dismiss(animated: true)
+        }
+        return keyboard
     }()
     
     let type : BudgetType

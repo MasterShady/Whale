@@ -164,7 +164,26 @@ enum TransactionType : Int, HandyJSONEnum, CaseIterable{
 
 
 struct BudgetTransaction: HandyJSON{
+    init() {
+        
+    }
+    
+    //类型
     var type : TransactionType?
-    var amount : Float?
-    var date: Date?
+    //价格
+    var amount : Double = 0
+    //日期
+    var date: Date!
+    //补充信息
+    var sup: String?
+    
+    var id: String!
+    
+    init(type: TransactionType? = nil, amount: Double, date: Date, sup: String? = nil) {
+        self.type = type
+        self.amount = amount
+        self.date = date
+        self.sup = sup
+        self.id = UUID().uuidString + "_" +  date.dateString() //加个时间方便查找.
+    }
 }

@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
         WhaleButton.register()
+        NavVC.navBarDefault
         
         let viewControllers = [CYLBaseNavigationController(rootViewController: DetailVC()),CYLBaseNavigationController(rootViewController: DetailVC())]
         

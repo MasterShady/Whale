@@ -37,6 +37,7 @@ class NavVC: UINavigationController {
         appearance.shadowColor = .clear
         appearance.shadowImage = nil
         appearance.backgroundColor = .kThemeColor
+        appearance.backgroundImage = UIImage(color: .kThemeColor)
         return appearance
     }()
     
@@ -46,6 +47,7 @@ class NavVC: UINavigationController {
         appearance.shadowColor = .clear
         appearance.shadowImage = nil
         appearance.backgroundColor = .clear
+        
         return appearance
     }()
     

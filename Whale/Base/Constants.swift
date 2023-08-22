@@ -150,9 +150,7 @@ public var keyWindow: UIWindow? {
 public func printLog<T>(_ message: T,
                  file: String = #file,
                  line: Int = #line) {
-    #if DEBUG
-    print("\((file as NSString).lastPathComponent)[\(line)]: \(message)")
-    #endif
+    print("~~ \((file as NSString).lastPathComponent)[\(line)]: \(message)")
 }
 
 

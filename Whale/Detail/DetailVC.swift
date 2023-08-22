@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ETNavBarTransparent
 
 class DetailVC: BaseVC {
     
@@ -15,13 +16,26 @@ class DetailVC: BaseVC {
     var outcomeLabel: UILabel!
     var tableView: UITableView!
     
+    var budgets = [BudgetTransaction]() {
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
+    
     override func configNavigationBar(){
         self.navigationItem.title = "鲸鱼记账"
+        self.navBarBgAlpha = 1
+        self.navBarTintColor = .kThemeColor
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.budgets = BudgetStore.getAllBudgets()
     }
     
     override func configSubViews() {
         self.edgesForExtendedLayout = []
-         
+        
         let gradientColor = UIColor.gradient(colors: [UIColor.kThemeColor, UIColor.kThemeColor.withAlphaComponent(0)], from: CGPoint(x: kScreenWidth/2, y: 0), to: CGPoint(x: kScreenWidth/2, y: 160),size: CGSize(width: kScreenWidth, height: 160))
         let gradientBgView = UIView()
         view.addSubview(gradientBgView)
@@ -116,6 +130,7 @@ class DetailVC: BaseVC {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
+        tableView.register(BudgetTransactionCell.self)
         
         reloadData()
     }
@@ -158,11 +173,13 @@ class DetailVC: BaseVC {
 
 extension DetailVC : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return budgets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell(frame: .zero)
+        let cell = tableView.dequeueReusableCell(BudgetTransactionCell.self, indexPath: indexPath)
+        cell.budget = self.budgets[indexPath.row]
+        return cell
     }
     
     

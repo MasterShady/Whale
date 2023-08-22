@@ -7,15 +7,45 @@
 
 import Foundation
 
+
+extension Double{
+    var hasDecimalPart: Bool{
+        let tolerance = 1e-10 // 设置一个很小的阈值
+        let absoluteValue = abs(self)
+        let fractionalPart = absoluteValue - floor(absoluteValue)
+        return fractionalPart > tolerance
+    }
+    
+    static func toString(_ double: Double?) ->String{
+        let notNilDouble = double ?? 0
+        if notNilDouble.hasDecimalPart{
+            return String(notNilDouble)
+        }else{
+            return String(Int(notNilDouble))
+        }
+    }
+}
+
+
 protocol CalculatorDelegate: AnyObject {
     func calculatorDidUpdateDisplay(_ display: String)
+    func hasOperatorSymbol(_ hasSymbol: Bool)
+    
 }
 
 struct Calculator {
     private var display: String = "0"
-    private var currentInput: String = ""
+    var currentInput: String = ""
     private var operand1: Double?
-    private var operatorSymbol: String?
+    private var operatorSymbol: String? {
+        didSet{
+            if let _ = operatorSymbol{
+                self.delegate?.hasOperatorSymbol(true)
+            }else{
+                self.delegate?.hasOperatorSymbol(false)
+            }
+        }
+    }
     
     weak var delegate: CalculatorDelegate?
     
@@ -42,9 +72,12 @@ struct Calculator {
         updateDisplay()
     }
     
+    
+    
     private mutating func updateDisplay() {
         if let operatorSymbol = operatorSymbol {
-            display = "\(operand1 ?? 0) \(operatorSymbol) \(currentInput)"
+            let operand1Str = Double.toString(operand1)
+            display = "\(operand1Str) \(operatorSymbol) \(currentInput)"
         } else {
             display = currentInput.isEmpty ? "0" : currentInput
         }
@@ -77,32 +110,34 @@ struct Calculator {
     }
     
     private mutating func calculateResult() {
-        if let existingOperand1 = operand1, let existingOperator = operatorSymbol, let operand2 = Double(currentInput) {
+        if let existingOperand1 = operand1, let existingOperator = operatorSymbol {
+            let operand2 = Double(currentInput) ?? 0
             calculatePartialResult(existingOperand1, existingOperator, operand2)
-            currentInput = "\(existingOperand1 + operand2)"
-            //operand1 = nil
+            if existingOperator == "+"{
+                let value = existingOperand1 + operand2
+                currentInput = Double.toString(value)
+            }else{
+                let value = existingOperand1 + operand2
+                currentInput = Double.toString(value)
+            }
+            
+            operand1 = nil
             operatorSymbol = nil
         }
         
-        updateDisplay()
+        //updateDisplay()
     }
     
     private mutating func handleDelete() {
         if !currentInput.isEmpty {
             currentInput.removeLast()
         }
-        
-        updateDisplay()
     }
     
     private mutating func clear() {
         currentInput = ""
         operand1 = nil
         operatorSymbol = nil
-        updateDisplay()
-    }
-    
-    func getDisplay() -> String {
-        return display
     }
 }
+
