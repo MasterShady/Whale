@@ -22,6 +22,8 @@ class CreateBudgetTypeVC: BaseVC {
         let keyboard = TransactionKeyboard()
         keyboard.didCompletedEditing = {[weak self] amount, date, sup in
             guard let self = self else {return}
+            
+            
             let budget = BudgetTransaction(type: self.transactionType, amount: amount, date: date, sup: sup)
             BudgetStore.addBudget(budget: budget)
             self.dismiss(animated: true)

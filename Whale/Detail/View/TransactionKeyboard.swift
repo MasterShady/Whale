@@ -149,6 +149,10 @@ class TransactionKeyboard: UIView, CalculatorDelegate {
                     if self.doneBtn.isSelected{
                         self.calculator.handleInput("=")
                     }else{
+                        if self.amount == 0{
+                            "金额不能为0哦".hint()
+                            return
+                        }
                         self.hide()
                         self.didCompletedEditing?(self.amount,self.date,self.tipsField.text)
                     }

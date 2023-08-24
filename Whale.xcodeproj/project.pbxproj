@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0076A80530CCB0AF9BEB0C6B /* Pods_Whale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9678428505FBC7B42D60906 /* Pods_Whale.framework */; };
+		EB006E732A974C1F0091D50B /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB006E722A974C1F0091D50B /* BalloonMarker.swift */; };
 		EB9B19EF2A9304C40094D201 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B19EE2A9304C40094D201 /* AppDelegate.swift */; };
 		EB9B19F32A9304C40094D201 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B19F22A9304C40094D201 /* ViewController.swift */; };
 		EB9B19F62A9304C40094D201 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB9B19F42A9304C40094D201 /* Main.storyboard */; };
@@ -83,12 +84,15 @@
 		EBF681282A94889E00013F50 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF681272A94889E00013F50 /* BaseView.swift */; };
 		EBF6812C2A94B1A400013F50 /* BudgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF6812B2A94B1A400013F50 /* BudgetStore.swift */; };
 		EBF6812E2A94CD8800013F50 /* BudgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF6812D2A94CD8800013F50 /* BudgetManager.swift */; };
+		EBF681302A95B87C00013F50 /* MonthPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF6812F2A95B87C00013F50 /* MonthPicker.swift */; };
+		EBF681332A95DC5E00013F50 /* ChartPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF681322A95DC5E00013F50 /* ChartPageVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		83A48FB3678F43A0BD2165EA /* Pods-Whale.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whale.release.xcconfig"; path = "Target Support Files/Pods-Whale/Pods-Whale.release.xcconfig"; sourceTree = "<group>"; };
 		B6B1A0F399C42E1A0CB2919C /* Pods-Whale.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whale.debug.xcconfig"; path = "Target Support Files/Pods-Whale/Pods-Whale.debug.xcconfig"; sourceTree = "<group>"; };
 		B9678428505FBC7B42D60906 /* Pods_Whale.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Whale.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB006E722A974C1F0091D50B /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		EB9B19EB2A9304C40094D201 /* Whale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB9B19EE2A9304C40094D201 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB9B19F22A9304C40094D201 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 		EBF681272A94889E00013F50 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		EBF6812B2A94B1A400013F50 /* BudgetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetStore.swift; sourceTree = "<group>"; };
 		EBF6812D2A94CD8800013F50 /* BudgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetManager.swift; sourceTree = "<group>"; };
+		EBF6812F2A95B87C00013F50 /* MonthPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthPicker.swift; sourceTree = "<group>"; };
+		EBF681322A95DC5E00013F50 /* ChartPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPageVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +212,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EB006E712A974C190091D50B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB006E722A974C1F0091D50B /* BalloonMarker.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		EB9B19E22A9304C40094D201 = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +241,7 @@
 		EB9B19ED2A9304C40094D201 /* Whale */ = {
 			isa = PBXGroup;
 			children = (
+				EBF681312A95DC4500013F50 /* Chart */,
 				EB9B1A892A9307D10094D201 /* Whale-Bridging-Header.h */,
 				EB9B1A822A9306AF0094D201 /* Detail */,
 				EB9B1A0D2A9306400094D201 /* Utils */,
@@ -448,8 +463,18 @@
 				EBF681202A94888E00013F50 /* DatePicker.swift */,
 				EBF681212A94888E00013F50 /* MultiplePicker.swift */,
 				EBF681222A94888E00013F50 /* SinglePicker.swift */,
+				EBF6812F2A95B87C00013F50 /* MonthPicker.swift */,
 			);
 			path = Picker;
+			sourceTree = "<group>";
+		};
+		EBF681312A95DC4500013F50 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				EB006E712A974C190091D50B /* View */,
+				EBF681322A95DC5E00013F50 /* ChartPageVC.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -575,6 +600,8 @@
 				EB9B1A972A9359870094D201 /* CreateBudgetTypeVC.swift in Sources */,
 				EB9B1A912A93467A0094D201 /* WhaleTabbarVC.swift in Sources */,
 				EB9B1A532A9306400094D201 /* AEPathAnimation.swift in Sources */,
+				EBF681332A95DC5E00013F50 /* ChartPageVC.swift in Sources */,
+				EB006E732A974C1F0091D50B /* BalloonMarker.swift in Sources */,
 				EB9B1A752A9306400094D201 /* UIGestureRecognizer+Chain.swift in Sources */,
 				EB9B1A672A9306400094D201 /* DateExtension.swift in Sources */,
 				EB9B1A652A9306400094D201 /* UIColor++.swift in Sources */,
@@ -620,6 +647,7 @@
 				EB9B1A772A9306400094D201 /* UIScrollView+Chain.swift in Sources */,
 				EB9B1A622A9306400094D201 /* Array++.swift in Sources */,
 				EB9B1A842A9306C00094D201 /* DetailVC.swift in Sources */,
+				EBF681302A95B87C00013F50 /* MonthPicker.swift in Sources */,
 				EB9B1A562A9306400094D201 /* AutoProgressHUD.swift in Sources */,
 				EB9B1A7F2A9306400094D201 /* CancelaleTimer.swift in Sources */,
 				EB9B1A6F2A9306400094D201 /* UILabel+Chain.swift in Sources */,
@@ -789,11 +817,12 @@
 				DEVELOPMENT_TEAM = 6475J8L3PC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Whale/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "鲸鱼记账";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -801,10 +830,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dofun.Whale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Whale-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -819,11 +851,12 @@
 				DEVELOPMENT_TEAM = 6475J8L3PC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Whale/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "鲸鱼记账";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -831,10 +864,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dofun.Whale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Whale-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

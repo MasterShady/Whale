@@ -15,22 +15,83 @@ class DetailVC: BaseVC {
     var incomeLabel: UILabel!
     var outcomeLabel: UILabel!
     var tableView: UITableView!
-    
-    var budgets = [BudgetTransaction]() {
+    var currentMonth: Date = .init() {
         didSet{
-            self.tableView.reloadData()
+            self.updateCurrentMonth()
         }
     }
     
+    lazy var noDataView: UIView = {
+        let noDataView = UIView()
+        self.view.addSubview(noDataView)
+        noDataView.snp.makeConstraints { make in
+            make.edges.equalTo(self.tableView)
+        }
+        noDataView.backgroundColor = .white
+        noDataView.isHidden = true
+        let title = UILabel()
+        noDataView.addSubview(title)
+        title.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-15)
+        }
+        title.chain.font(.systemFont(ofSize: 12)).text(color: .kTextLightGray).text("没有任何账单哦~")
+        
+        let button = UIButton()
+        noDataView.addSubview(button)
+        button.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(15)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 64, height: 30))
+        }
+        button.chain.normalTitle(text: "去添加").normalTitleColor(color: .white).font(.systemFont(ofSize: 12)).backgroundColor(.kThemeColor).corner(radius: 15).clipsToBounds(true)
+        button.addBlock(for: .touchUpInside) {[weak self] _ in
+            self?.present(NavVC(rootViewController: CreateBudgetVC()), animated: true)
+        }
+        
+        
+        return noDataView
+    }()
+    
+    lazy var monthPicker: MonthPicker = {
+        let title = NSMutableAttributedString(string:"选择日期")
+        title.setAttributes([
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
+            NSAttributedString.Key.foregroundColor: UIColor.kBlack,
+        ], range: title.range)
+        
+        //
+        
+        let fromDate = Date(string: "2010/01/01", format: "YYYY/MM/dd")!
+        let toDate = Date(string: "2030/12/31", format: "YYYY/MM/dd")!
+        let picker = MonthPicker(title: title, fromDate: fromDate, toDate: toDate) { [weak self] date in
+            GEPopTool.dismissPopView()
+            guard let self = self else {return}
+            self.currentMonth = date
+        }
+        picker.setSelectedData(Date())
+        picker.snp.makeConstraints { make in
+            make.size.equalTo(CGSize(width: kScreenWidth, height: 290 + kBottomSafeInset))
+        };
+
+        return picker
+    }()
+    
+    var monthBudgets : DurationBudgets = .init(monthDate: Date()) {
+        didSet{
+            self.updateBudgetsTable()
+        }
+    }
+    
+
+    
     override func configNavigationBar(){
         self.navigationItem.title = "鲸鱼记账"
-        self.navBarBgAlpha = 1
-        self.navBarTintColor = .kThemeColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.budgets = BudgetStore.getAllBudgets()
+        monthBudgets = BudgetStore.getAllDayBudgetsOfMonth(currentMonth, filterEmpty: true)
     }
     
     override func configSubViews() {
@@ -55,6 +116,10 @@ class DetailVC: BaseVC {
             make.left.equalTo(14)
             make.width.equalTo(60)
             make.top.bottom.equalTo(0)
+        }
+        dateBtn.addBlock(for: .touchUpInside) {[weak self] _ in
+            guard let self = self else {return}
+            GEPopTool.popViewFormBottom(view: self.monthPicker)
         }
         
         yearLabel = UILabel()
@@ -120,7 +185,7 @@ class DetailVC: BaseVC {
             make.left.equalTo(outcomeTitle)
         }
         
-        tableView = UITableView()
+        tableView = UITableView(frame: .zero, style: .grouped)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.equalTo(sumView.snp.bottom)
@@ -132,16 +197,20 @@ class DetailVC: BaseVC {
         tableView.backgroundColor = .clear
         tableView.register(BudgetTransactionCell.self)
         
-        reloadData()
+        
     }
     
-    func reloadData(){
-        let date = Date()
-        yearLabel.text = "\(date.year)年"
-        mothLabel.text = "\(date.month)月"
+    
+    
+    func updateCurrentMonth(){
+        yearLabel.text = "\(currentMonth.year)年"
+        mothLabel.text = "\(currentMonth.month)月"
+        monthBudgets = BudgetStore.getAllDayBudgetsOfMonth(currentMonth)
         
-        
-        let totalIncome = 199.01
+    }
+    
+    func updateBudgetsTable(){
+        let totalIncome = monthBudgets.totalIncome
         let incomeRaw = String(format: "%.2f", totalIncome)
         let incomeValue = NSMutableAttributedString(incomeRaw, color: .kTextBlack, font: .semibold(16))
         let range = NSRange(location: (incomeRaw as NSString).length - 2, length: 2)
@@ -150,11 +219,9 @@ class DetailVC: BaseVC {
             .font: UIFont.systemFont(ofSize: 10)
         ], range: range)
         
-        
         incomeLabel.attributedText = incomeValue
         
-        
-        let totalOutcome = 1564.3
+        let totalOutcome = monthBudgets.totalOutcome
         let outcomeRaw = String(format: "%.2f", totalOutcome)
         let outcomeValue = NSMutableAttributedString(outcomeRaw, color: .kTextBlack, font: .semibold(16))
         let range1 = NSRange(location: (outcomeRaw as NSString).length - 2, length: 2)
@@ -164,21 +231,35 @@ class DetailVC: BaseVC {
         ], range: range1)
 
         outcomeLabel.attributedText = outcomeValue
-        
-        
-        
+        tableView.reloadData()
     }
     
 }
 
 extension DetailVC : UITableViewDataSource, UITableViewDelegate{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        noDataView.isHidden = monthBudgets.dayBudgetsList.count != 0
+        return monthBudgets.dayBudgetsList.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = DayBudgetsHeader()
+        header.dayBudgets = monthBudgets.dayBudgetsList[section]
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return budgets.count
+        return monthBudgets.dayBudgetsList[section].budgets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(BudgetTransactionCell.self, indexPath: indexPath)
-        cell.budget = self.budgets[indexPath.row]
+        cell.budget = monthBudgets.dayBudgetsList[indexPath.section].budgets[indexPath.row]
         return cell
     }
     
@@ -186,5 +267,15 @@ extension DetailVC : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                // Perform your delete operation here
+                let dayBudgets = self.monthBudgets.dayBudgetsList[indexPath.section]
+                let budget = dayBudgets.budgets[indexPath.row]
+                BudgetStore.deleteBudget(id: budget.id)
+                monthBudgets = BudgetStore.getAllDayBudgetsOfMonth(currentMonth, filterEmpty: true)
+            }
+        }
     
 }

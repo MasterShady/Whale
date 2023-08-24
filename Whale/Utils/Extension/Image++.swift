@@ -345,5 +345,31 @@ extension UIImage {
         
         return scaledImage!
     }
+    
+    func drawInColor(color:UIColor,size:CGSize,cornerRadius:CGFloat, tintColor:UIColor?,insets:UIEdgeInsets) -> UIImage{
+        UIGraphicsBeginImageContextWithOptions(size, false, self.scale)
+        color.setFill()
+        let circlePath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        circlePath.fill()
+        if let tintColor = tintColor{
+            self.withTintColor(tintColor).draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height).inset(by: insets))
+        }else{
+            self.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height).inset(by: insets))
+        }
+        let resultImg = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resultImg!
+    }
+    
+    func addImage(image: UIImage, in targetRect: CGRect) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        image.draw(in: targetRect)
+        
+        let resultImg = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return resultImg
+    }
 
 }

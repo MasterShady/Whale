@@ -11,7 +11,7 @@ import JXSegmentedView
 class CreateBudgetVC: BaseVC {
 
     override func configNavigationBar() {
-        let dismissItem = UIBarButtonItem(title: "取消", image: nil, target: nil, action: nil)
+        let dismissItem = UIBarButtonItem(title: "取消", style: .plain, target: nil, action: nil)
         dismissItem.actionBlock = { [weak self] _ in
             self?.dismiss(animated: true)
         }

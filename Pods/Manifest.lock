@@ -5,6 +5,9 @@ PODS:
   - CYLTabBarController (1.24.2):
     - CYLTabBarController/Core (= 1.24.2)
   - CYLTabBarController/Core (1.24.2)
+  - DGCharts (5.0.0):
+    - DGCharts/Core (= 5.0.0)
+  - DGCharts/Core (5.0.0)
   - EmptyDataSet-Swift (5.0.0)
   - ETNavBarTransparent (1.1.3)
   - FSPagerView (0.8.3)
@@ -69,6 +72,7 @@ DEPENDENCIES:
   - Cache (~> 6.0.0)
   - CLImagePickerTool
   - CYLTabBarController (~> 1.24.0)
+  - DGCharts
   - EmptyDataSet-Swift (~> 5.0.0)
   - ETNavBarTransparent
   - FSPagerView (~> 0.8.3)
@@ -94,6 +98,7 @@ SPEC REPOS:
     - Cache
     - CLImagePickerTool
     - CYLTabBarController
+    - DGCharts
     - EmptyDataSet-Swift
     - ETNavBarTransparent
     - FSPagerView
@@ -128,6 +133,7 @@ SPEC CHECKSUMS:
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
   CLImagePickerTool: 2ef59c6524efd493571a0ee2bc42f445b4c5b2cb
   CYLTabBarController: e7440ad0992edfb8ac14a6c793f43aa636c5cba5
+  DGCharts: 6e0cf2644e8f81ad13f04caa8bc18502870a1c54
   EmptyDataSet-Swift: eb382c0c87a2d9c678077385a595cec52da38171
   ETNavBarTransparent: dd05fd593b31d5d786e05631149ceea1e13b30ef
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
@@ -149,6 +155,6 @@ SPEC CHECKSUMS:
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
   YYKit: 9ac092a14e3d5af709b707479bdb76b96a62fb41
 
-PODFILE CHECKSUM: 80ed2509f0f0a5c449fa6ab320e6b7e92d3cc0a5
+PODFILE CHECKSUM: e715428a9eb9826cd98791dfb2f56d8204a8c4ff
 
 COCOAPODS: 1.12.1

@@ -26,6 +26,7 @@ target 'Whale' do
   pod 'ETNavBarTransparent'
   pod 'JXPhotoBrowser', '~> 3.0'
   pod 'CYLTabBarController', '~> 1.24.0'
+  pod 'DGCharts'
 
 end
 

@@ -22,28 +22,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
         WhaleButton.register()
-        NavVC.navBarDefault
+        //NavVC.navBarDefault
         
-        let viewControllers = [CYLBaseNavigationController(rootViewController: DetailVC()),CYLBaseNavigationController(rootViewController: DetailVC())]
+        let viewControllers = [NavVC(rootViewController: DetailVC()),NavVC(rootViewController: ChartPageVC())]
         
-        let detailImage = UIImage(named: "tabbar_detail")!.withRenderingMode(.alwaysOriginal)
+        let detailImage = UIImage(named: "bill")!.withRenderingMode(.alwaysOriginal)
         let selectedDetailImage = detailImage.colored(.kThemeColor)!.withRenderingMode(.alwaysOriginal)
         
         let items : [[String : Any]] = [
             [
-                CYLTabBarItemTitle: "明细",
+                
                 CYLTabBarItemImage: detailImage,
                 CYLTabBarItemSelectedImage: selectedDetailImage,
             ] ,
             [
-                CYLTabBarItemTitle: "趋势",
-                CYLTabBarItemImage: "001-restaurant",
-                CYLTabBarItemSelectedImage: "001-restaurant"
+                
+                CYLTabBarItemImage: UIImage(named: "bar-chart")!.withRenderingMode(.alwaysOriginal),
+                CYLTabBarItemSelectedImage: UIImage(named: "bar-chart")!.colored(.kThemeColor)!.withRenderingMode(.alwaysOriginal)
             ],
         ]
         
         
         let tabbarController = WhaleTabbarVC(viewControllers: viewControllers, tabBarItemsAttributes: items)
+        tabbarController.tabBar.backgroundColor = .kExLightGray
         
         
         if window == nil{
