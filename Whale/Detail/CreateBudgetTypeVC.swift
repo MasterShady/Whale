@@ -15,6 +15,7 @@ class CreateBudgetTypeVC: BaseVC {
     var scrollView: UIScrollView!
     var itemViews = [UIButton]()
     var transactionType : TransactionType?
+    var didSelectedType : ((TransactionType) -> ())?
     
 
     
@@ -108,7 +109,13 @@ class CreateBudgetTypeVC: BaseVC {
                     }
                 }
                 self.transactionType = item
-                self.keyboard.show()
+                
+                if (didSelectedType != nil){
+                    didSelectedType!(self.transactionType!)
+                    self.dismiss(animated: true)
+                }else{
+                    self.keyboard.show()
+                }
             }
         }
         

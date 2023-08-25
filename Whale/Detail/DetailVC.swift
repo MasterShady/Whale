@@ -265,7 +265,10 @@ extension DetailVC : UITableViewDataSource, UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let dayBudgets = self.monthBudgets.dayBudgetsList[indexPath.section]
+        let budget = dayBudgets.budgets[indexPath.row]
+        let editVC = BudgetEditVC(budget: budget)
+        self.navigationController?.pushViewController(editVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

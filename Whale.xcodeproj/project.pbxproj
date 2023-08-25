@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0076A80530CCB0AF9BEB0C6B /* Pods_Whale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9678428505FBC7B42D60906 /* Pods_Whale.framework */; };
 		EB006E732A974C1F0091D50B /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB006E722A974C1F0091D50B /* BalloonMarker.swift */; };
+		EB006E772A9856FB0091D50B /* BudgetEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB006E762A9856FB0091D50B /* BudgetEditVC.swift */; };
 		EB9B19EF2A9304C40094D201 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B19EE2A9304C40094D201 /* AppDelegate.swift */; };
 		EB9B19F32A9304C40094D201 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B19F22A9304C40094D201 /* ViewController.swift */; };
 		EB9B19F62A9304C40094D201 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB9B19F42A9304C40094D201 /* Main.storyboard */; };
@@ -93,6 +94,7 @@
 		B6B1A0F399C42E1A0CB2919C /* Pods-Whale.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whale.debug.xcconfig"; path = "Target Support Files/Pods-Whale/Pods-Whale.debug.xcconfig"; sourceTree = "<group>"; };
 		B9678428505FBC7B42D60906 /* Pods_Whale.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Whale.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB006E722A974C1F0091D50B /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		EB006E762A9856FB0091D50B /* BudgetEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEditVC.swift; sourceTree = "<group>"; };
 		EB9B19EB2A9304C40094D201 /* Whale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB9B19EE2A9304C40094D201 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB9B19F22A9304C40094D201 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 			children = (
 				EB9B1A8B2A9336380094D201 /* BudgetTransactionCell.swift */,
 				EB9B1A982A936B080094D201 /* TransactionKeyboard.swift */,
+				EB006E762A9856FB0091D50B /* BudgetEditVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				EB9B1A542A9306400094D201 /* AEAlertView.swift in Sources */,
 				EB9B1A632A9306400094D201 /* UIView++.swift in Sources */,
 				EB9B1A5B2A9306400094D201 /* UICollectionView++.swift in Sources */,
+				EB006E772A9856FB0091D50B /* BudgetEditVC.swift in Sources */,
 				EBF681242A94888E00013F50 /* DatePicker.swift in Sources */,
 				EBF6812C2A94B1A400013F50 /* BudgetStore.swift in Sources */,
 				EB9B1A6D2A9306400094D201 /* UIImage+Chain.swift in Sources */,

@@ -45,7 +45,7 @@ class CreateBudgetVC: BaseVC {
     private lazy var segmentedDS: JXSegmentedTitleDataSource = {
         let source = JXSegmentedTitleDataSource()
         source.titleNormalFont = .systemFont(ofSize: 15)
-        source.titleNormalColor = .kTextLightGray
+        source.titleNormalColor = .kTextBlack
         source.titleSelectedFont = .semibold(18)
         source.titleSelectedColor = .kTextBlack
         return source

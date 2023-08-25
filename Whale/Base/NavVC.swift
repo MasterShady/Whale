@@ -66,7 +66,7 @@ class NavVC: UINavigationController {
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if (self.viewControllers.count >= 1){
             viewController.hidesBottomBarWhenPushed = true
-            let item = UIBarButtonItem(image: .init(named: "order_back")?.withRenderingMode(.alwaysOriginal), style: .plain, target: nil, action: nil)
+            let item = UIBarButtonItem(image: .init(named: "nav_back")?.withRenderingMode(.alwaysOriginal), style: .plain, target: nil, action: nil)
             item.actionBlock = {[weak viewController, weak self] _ in
                 if let action = viewController?.sy_popAction {
                     action()

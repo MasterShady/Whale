@@ -134,6 +134,12 @@ class BudgetStore{
         }
     }
     
+    static func updateBudget(budget:BudgetTransaction){
+        let json = budget.toJSON()!
+        UserDefaults.standard.set(json, forKey: budget.id)
+        UserDefaults.standard.synchronize()
+    }
+    
     
     
     static func getAllBudgets() -> [BudgetTransaction]{

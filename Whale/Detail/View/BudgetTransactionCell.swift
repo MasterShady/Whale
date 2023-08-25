@@ -77,8 +77,10 @@ class BudgetTransactionCell: UITableViewCell {
                 supLabel.text = budget.type?.description
             }
             if budget.type!.type == .income {
+                amoutLabel.textColor = .green
                 amoutLabel.text = "+" + Double.toString(budget.amount)
             }else{
+                amoutLabel.textColor = .red
                 amoutLabel.text = "-" + Double.toString(budget.amount)
             }
             

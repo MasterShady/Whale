@@ -169,7 +169,7 @@ struct BudgetTransaction: HandyJSON{
     }
     
     //类型
-    var type : TransactionType?
+    var type : TransactionType!
     //价格
     var amount : Double = 0
     //日期
