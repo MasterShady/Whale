@@ -18,26 +18,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="raX-2K-nnQ">
-                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="raX-2K-nnQ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="0Dx-Kh-khT"/>
-                            <constraint firstAttribute="leading" secondItem="raX-2K-nnQ" secondAttribute="trailing" id="OlH-Pp-qHe"/>
-                            <constraint firstAttribute="bottom" secondItem="raX-2K-nnQ" secondAttribute="bottom" id="Olo-rE-Ijb"/>
-                            <constraint firstItem="raX-2K-nnQ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="yhh-d5-4z1"/>
+                            <constraint firstItem="raX-2K-nnQ" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="0J0-8X-uwS"/>
+                            <constraint firstAttribute="bottom" secondItem="raX-2K-nnQ" secondAttribute="bottom" id="Pcr-IS-fqB"/>
+                            <constraint firstItem="raX-2K-nnQ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="WfY-wB-uex"/>
+                            <constraint firstItem="raX-2K-nnQ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="kFj-gg-kgt"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
     <resources>
         <image name="launchImage" width="562.5" height="1218"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

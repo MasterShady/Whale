@@ -86,7 +86,7 @@ class DetailVC: BaseVC {
 
     
     override func configNavigationBar(){
-        self.navigationItem.title = "鲸鱼记账"
+        self.navigationItem.title = "至尊组组"
     }
     
     override func viewWillAppear(_ animated: Bool) {

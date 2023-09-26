@@ -58,6 +58,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    
+    func setup() {
+        let navigationBar = UINavigationBar.appearance()
+        navigationBar.isTranslucent = false
+        Configure.shared.setup()
+        
+        _ = Configure.shared.theme.asObservable().subscribe(onNext: { (theme) in
+            ColorCenter.shared.theme = theme
+            self.window?.tintColor = ColorCenter.shared.tint.value
+            if theme == .black {
+                if Configure.shared.markdownStyle.value == "GitHub" {
+                    Configure.shared.markdownStyle.value = "GitHub Dark"
+                }
+                if Configure.shared.highlightStyle.value == "tomorrow" {
+                    Configure.shared.highlightStyle.value = "tomorrow-night"
+                }
+            } else {
+                if Configure.shared.markdownStyle.value == "GitHub Dark" {
+                    Configure.shared.markdownStyle.value = "GitHub"
+                }
+                if Configure.shared.highlightStyle.value == "tomorrow-night" {
+                    Configure.shared.highlightStyle.value = "tomorrow"
+                }
+            }
+        })
+        
+        _ = Configure.shared.darkOption.asObservable().subscribe(onNext: { (darkOption) in
+            var value = Configure.shared.theme.value
+            switch darkOption {
+                case .dark:
+                    value = .black
+                case .light:
+                    if value == .black {
+                        value = .white
+                    }
+                case .system:
+                    if #available(iOS 13.0, *) {
+                        if UITraitCollection.current.userInterfaceStyle == .dark {
+                            value = .black
+                        } else if Configure.shared.theme.value == .black {
+                            value = .white
+                        }
+                    } else {
+                        ActivityIndicator.showError(withStatus: "Only Work on iPad OS / iOS 13")
+                    }
+            }
+            if Configure.shared.theme.value != value {
+                Configure.shared.theme.value = value
+            }
+        })
 
 }
 

@@ -1,6 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-Whale/Pods-Whale-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/CLImagePickerTool/CLImagePickerTool.framework
 ${BUILT_PRODUCTS_DIR}/CYLTabBarController/CYLTabBarController.framework
 ${BUILT_PRODUCTS_DIR}/Cache/Cache.framework
 ${BUILT_PRODUCTS_DIR}/DGCharts/DGCharts.framework

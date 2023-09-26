@@ -20,7 +20,7 @@ target 'Whale' do
   pod 'MJRefresh'
   pod 'IQKeyboardManagerSwift', '6.3.0'
   pod 'JXSegmentedView', '~> 1.3.0'
-  pod 'CLImagePickerTool'
+#  pod 'CLImagePickerTool'
   pod 'Cache', '~> 6.0.0'
   pod 'ThinkingSDK','2.8.3.2'
   pod 'ETNavBarTransparent'

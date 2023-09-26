@@ -1,7 +1,6 @@
 PODS:
   - Alamofire (5.7.1)
   - Cache (6.0.0)
-  - CLImagePickerTool (3.1.3)
   - CYLTabBarController (1.24.2):
     - CYLTabBarController/Core (= 1.24.2)
   - CYLTabBarController/Core (1.24.2)
@@ -70,7 +69,6 @@ PODS:
 
 DEPENDENCIES:
   - Cache (~> 6.0.0)
-  - CLImagePickerTool
   - CYLTabBarController (~> 1.24.0)
   - DGCharts
   - EmptyDataSet-Swift (~> 5.0.0)
@@ -96,7 +94,6 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Cache
-    - CLImagePickerTool
     - CYLTabBarController
     - DGCharts
     - EmptyDataSet-Swift
@@ -131,7 +128,6 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
-  CLImagePickerTool: 2ef59c6524efd493571a0ee2bc42f445b4c5b2cb
   CYLTabBarController: e7440ad0992edfb8ac14a6c793f43aa636c5cba5
   DGCharts: 6e0cf2644e8f81ad13f04caa8bc18502870a1c54
   EmptyDataSet-Swift: eb382c0c87a2d9c678077385a595cec52da38171
@@ -155,6 +151,6 @@ SPEC CHECKSUMS:
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
   YYKit: 9ac092a14e3d5af709b707479bdb76b96a62fb41
 
-PODFILE CHECKSUM: e715428a9eb9826cd98791dfb2f56d8204a8c4ff
+PODFILE CHECKSUM: 85cac2e8bfe0e45066072578b061cab8514ee8b5
 
 COCOAPODS: 1.12.1
